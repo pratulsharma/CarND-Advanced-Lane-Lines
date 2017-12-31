@@ -43,7 +43,7 @@ Steps
 
 #### 1. Provide an example of a distortion-corrected image.
 
-Following image shows an example of distortion correction on the image of the road.
+Following shows an example of distortion correction on the image of the road.
 ![alt text][image2]
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
