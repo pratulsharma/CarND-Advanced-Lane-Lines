@@ -26,16 +26,16 @@ The goals / steps of this project are the following:
 ### Camera Calibration and Distortion correction
 
 #### 1. Briefly state how you computed the camera matrix and distortion coefficients. Provide an example of a distortion corrected calibration image.
-The code for this step is contained in the cameraCalibration function.
-The output of the cameraCalibration function is 
+The code for this step is contained in the `cameraCalibration()` function.
+The output of the `cameraCalibration()` function is 
  - Object points : 3d  points in real world space 
  - Image points : 2d points in the image plane
 
 Steps
 - Twenty one different images of chessboard pattern are used for camera calibration. 
-- convert the images from BGR 2 GRAY scale
-- Find the chess board corner using cv2.findChessboardCorners function
-- Use cv2.calibrateCamera function to do camera calibration. The output of which is used to undistort the image
+- First images are converted from BGR 2 GRAY scale.
+- Then chess board corners are identified using `cv2.findChessboardCorners()` function.
+- Then `cv2.calibrateCamera()` function is used to do camera calibration. 
 
 ![alt text][image1]
 
@@ -48,15 +48,15 @@ Following shows an example of distortion correction on the image of the road.
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
-I used a combination of color and gradient thresholds to generate a binary image (Look at thresholding(img) function in the CarND-Advanced-Lane-Finding.ipynb). 
-Image is first converted to HLS color space and then Sobel X transform is applied. In the given image, HLS color space works the best in various different lighting conditions.
-Here's an example of my output for this step.  
+I used a combination of color and gradient thresholds to generate a binary image using `thresholding()` function.
+Image is first converted to HLS color space and then Sobel X transform is applied. For the given project HLS color space works the best in various different lighting conditions.
+Here's an example of the output of this step.  
 
 ![alt text][image3]
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
-The code for my perspective transform includes a function called `perspective_transform()`.  I chose the hardcode the source and destination points in the following manner:
+The code for my perspective transform is included in a function called `perspective_transform()`. After several iterations I hardcoded the source and destination points in the following manner:
 
 ```python
 # Coordinates of the source points 
@@ -81,21 +81,21 @@ This resulted in the following source and destination points:
 | 592, 455     | 320, 1      |
 | 690, 455      | 1130, 1        |
 
-I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
+I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image.
 
 ![alt text][image4]
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
-A sliding window search is performed to detect the lane pixels (function `sliding_window`). A histogram is used as a starting point to identify the starting points of the lane. Once the starting points are initialized, sliding window search is used to detect the remaining lane pixels.
-Number of windows used = 15
-Number of minimum pixels detected = 80
-Margin (width of the window +/- margin) = 80
+A sliding window search is performed to detect the lane pixels (function `sliding_window`). A histogram is used as a to identify the starting points of the lane. Once the starting points are identified, sliding window search is used to detect the remaining lane pixels.
+- Number of windows used = 15
+- Number of minimum pixels detected = 80
+- Margin (width of the window +/- margin) = 80
 ![alt text][image5]
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
-The radius of curvature is calculated using the formula from the class material. The function `radius` contains the code for radius calculation.
+The radius of curvature is calculated using the formula from the class notes. The function `radius` contains the code for radius calculation.
 
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
@@ -119,5 +119,5 @@ Here's the Youtube link
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-- I used only the mean between the 20 frames to smoothen the lanes on the video. I have not used any other technique to reject the incorrect lanes due to the time pressure. The project can further be improved by rejecting the frames where the lanes are detected much further away from where they should be. Techchniques like - average distance between the lanes, left and right radius values can be used between the subsequent frames to further improve the output. 
+- I used only the mean of 15 frames to smoothen the lanes on the video. I have not used any other technique to reject the incorrect lanes due to the time pressure. The project can further be improved by rejecting the frames where the lanes are detected much further away. Techchniques like - average distance between the lanes, left and right radius values can be used between the subsequent frames to further improve the output. 
 - Other color transform can be studied to see if the output can be improved.
