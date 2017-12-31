@@ -109,7 +109,7 @@ The function `draw_lanes` perform this task.
 
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
 
-[![Project video output](https://img.youtube.com/vi/BWoM_VqezPA/0.jpg)](https://youtu.be/BWoM_VqezPA)
+[![Project video output](https://youtu.be/BWoM_VqezPA?t=4)](https://youtu.be/BWoM_VqezPA)
 
 Here's a [link to my video result](./project_video_cha.mp4)
 
