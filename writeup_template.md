@@ -133,4 +133,5 @@ Here's a [link to my video result](./project_video.mp4)
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-- The project 
+- I used only the mean between the 20 frames to smoothen the lanes on the video. I have not used any other technique to reject the incorrect lanes due to the time pressure. The project can further be improved by rejecting the frames where the lanes are detected much further away from where they should be. Techchniques like - average distance between the lanes, left and right radius values can be used between the subsequent frames to further improve the output. 
+- Other color transform can be studied to see if the output can be improved.
