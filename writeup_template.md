@@ -16,7 +16,7 @@ The goals / steps of this project are the following:
 [//]: # (Image References)
 
 [image1]: ./examples/undistort_output.png "Undistorted"
-[image2]: ./examples/Thresholded.png "Road Transformed"
+[image2]: ./examples/Road_image_undistorted.png "Road Transformed"
 [image3a]: ./examples/region_of_interest.png "Road Transformed"
 [image3]: ./examples/binary_combo_example.png "Binary Example"
 [image4]: ./examples/birds_eye_view.png "Warp Example"
@@ -31,7 +31,6 @@ The code for this step is contained in the `cameraCalibration()` function.
 The output of the `cameraCalibration()` function is 
  - Object points : 3d  points in real world space 
  - Image points : 2d points in the image plane
-
 Steps
 - Twenty one different images of chessboard pattern are used for camera calibration. 
 - First images are converted from BGR 2 GRAY scale.
@@ -45,6 +44,7 @@ Steps
 #### 1. Provide an example of a distortion-corrected image.
 
 Following shows an example of distortion correction on the image of the road.
+
 ![alt text][image2]
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
