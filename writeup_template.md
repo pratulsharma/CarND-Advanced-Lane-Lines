@@ -58,7 +58,7 @@ Here's an example of the output of this step.
 
 ![alt text][image3]
 
-Region of interest is extracted after various thresholds are applied on the image.
+Region of interest is extracted after thresholding.
 
 ![alt text][image3a]
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
