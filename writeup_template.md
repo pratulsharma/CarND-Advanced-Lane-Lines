@@ -82,9 +82,10 @@ I verified that my perspective transform was working as expected by drawing the 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
 A sliding window search is performed to detect the lane pixels (function `sliding_window`). A histogram is used as a to identify the starting points of the lane. Once the starting points are identified, sliding window search is used to detect the remaining lane pixels.
-- Number of windows used = 15
+- Number of windows used = 10
 - Number of minimum pixels detected = 80
 - Margin (width of the window +/- margin) = 80
+
 ![alt text][image5]
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
