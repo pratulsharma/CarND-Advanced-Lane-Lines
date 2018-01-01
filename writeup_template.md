@@ -16,11 +16,12 @@ The goals / steps of this project are the following:
 [//]: # (Image References)
 
 [image1]: ./examples/undistort_output.png "Undistorted"
-[image2]: ./examples/Road_image_undistorted.png "Road Transformed"
+[image2]: ./examples/Thresholded.png "Road Transformed"
+[image3a]: ./examples/region_of_interest.png "Road Transformed"
 [image3]: ./examples/binary_combo_example.png "Binary Example"
-[image4]: ./examples/warped.png "Warp Example"
+[image4]: ./examples/birds_eye_view.png "Warp Example"
 [image5]: ./examples/color_fit_lines.png "Fit Visual"
-[image6]: ./examples/example_output.png "Output"
+[image6]: ./examples/drawn_lane_lines.png "Output"
 [video1]: ./project_video_cha.mp4 "Video"
 
 ### Camera Calibration and Distortion correction
@@ -48,38 +49,31 @@ Following shows an example of distortion correction on the image of the road.
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
-I used a combination of color and gradient thresholds to generate a binary image using `thresholding()` function.
-Image is first converted to HLS color space and then Sobel X transform is applied. For the given project HLS color space works the best in various different lighting conditions.
+I used a combination of color and gradient thresholds to generate a binary image using `thresholding3()` function.
+Multiple Thresholds are applied on the image.
+- Extracted the S-channel of the original image in HLS format and combined the result with the extracted V-channel of the original image in HSV format.
+- Both, Sobel X and Y operators are used to filter the original image for the strongest gradients.
+
 Here's an example of the output of this step.  
 
 ![alt text][image3]
 
+Region of interest is extracted after various thresholds are applied on the image.
+
+![alt text][image3a]
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
-The code for my perspective transform is included in a function called `perspective_transform()`. After several iterations I hardcoded the source and destination points in the following manner:
+The code for my perspective transform is included in a function called `perspective_transform()`. 
 
-```python
-# Coordinates of the source points 
-    sbot_l = (300,720) 
-    sbot_r = (1130, 720)
-    stop_l = (592, 455)
-    stop_r = (690, 455)
-
-# Coordinates of the destination points 
-    dbot_l = (320,720) 
-    dbot_r = (1100,720)
-    dtop_l = (320 ,1)
-    dtop_r = (1130,1)
-```
 
 This resulted in the following source and destination points:
 
 | Source        | Destination   | 
 |:-------------:|:-------------:| 
-| 300, 720      | 320, 720        | 
-| 1130, 720      | 1100, 720      |
-| 592, 455     | 320, 1      |
-| 690, 455      | 1130, 1        |
+| 545, 460      | 0, 0        | 
+| 735, 460      | 1280, 0      |
+| 1280, 700     | 1280, 720      |
+| 0, 700      | 0, 720        |
 
 I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image.
 
